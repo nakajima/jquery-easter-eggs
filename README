@@ -28,8 +28,4 @@ the user types "info".
     $('.not-info').hide();
   });
 
-TODO
-
-* Don't listen while users are typing in form inputs.
-
 (c) Copyright 2008 Pat Nakajima & Jonno Riekwel
