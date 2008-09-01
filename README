@@ -3,6 +3,10 @@
 Allows for hidden behavior to occur after a user types
 given strings into document. It's silly.
 
+REQUIREMENTS
+
+* jQuery 1.2.3
+
 USAGE
 
 This snippet will show the element #some_id when the user
