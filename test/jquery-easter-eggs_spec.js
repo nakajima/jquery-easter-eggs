@@ -17,6 +17,20 @@ Screw.Unit(function() {
       expect($.easterEggs.log).to(be_empty);
     });
     
+    it("adds a space for non-word characters", function() {
+      expect($.easterEggs.log).to(be_empty);
+      $.easterEggs.handle({ keyCode: 27 });
+      expect($.easterEggs.log).to(have_length, 1);
+      expect($.easterEggs.log.pop()).to(equal, ' ');
+    });
+    
+    it("allows backspace", function() {
+      typeGreat();
+      expect($.easterEggs.log).to(have_length, 5);
+      $.easterEggs.handle({ keyCode: 8 });
+      expect($.easterEggs.log).to(have_length, 4);
+    });
+    
     it("returns current strings", function() {
       $.easterEggs.log = ['h','e','l','l','o',' ', 'w','o','r','l','d'];
       expect($.easterEggs.strings()).to(equal, ['hello', 'world']);
@@ -28,6 +42,13 @@ Screw.Unit(function() {
       var passed = false
       $.easterEggs.add('great', function() { passed = true });
       typeGreat();
+      expect(passed).to(be_true);
+    });
+    
+    it("shouldn't be called for inputs", function() {
+      var passed = true;
+      $.easterEggs.add('g', function() { passed = false });
+      $.easterEggs.handle({ keyCode: 71, target: $('#an-input')[0] });
       expect(passed).to(be_true);
     });
     

@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <script src="../test/screw-unit/jquery-1.2.3.js"></script>
+    <script src="../src/jquery-easter-eggs.js" type="text/javascript"></script>
+    <style type="text/css" media="screen">
+      body { font: 14px Helvetica; }
+    </style>
+    <script type="text/javascript" charset="utf-8">
+      $(document).ready(function() {
+        $('#step-1').addEgg('hello', function() {
+          this.show()
+          $('#start').remove();
+          $('#step-2').hide();
+        });
+        
+        $('#step-2').addEgg('bye', function() {
+          this.show();
+          $('#step-1').hide();
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <h1>jQuery Easter Eggs</h1>
+    <p id="start">Type "hello"</p>
+    <div id="step-1" style="display:none">
+      <h2>Oh, Hello!</h2>
+      <p>Now type "bye"</p>
+      <p>If you're typing in here, nothing should happen: <input type="text"></p>
+    </div>
+    <div id="step-2" style="display:none">
+      <h2>Goodbye!</h2>
+      <p>You can type "hello" again now.</p>
+      <p>If you're typing in here, nothing should happen: <input type="text"></p>
+    </div>
+    
+    
+    <div id="dom_test" style="position: absolute; left: -9999"></div>
+  </body>
+</html>

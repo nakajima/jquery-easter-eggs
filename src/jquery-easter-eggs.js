@@ -13,10 +13,12 @@
     },
     
     handle: function(event) {
-      var SPACE_BAR = 32;
+      if ($(event.target).is(':input')) { return; }
+      var BACKSPACE = 8;
       var code = event.charCode || event.keyCode;
-      var character = (code == SPACE_BAR) ? ' ' : String.fromCharCode(code).toLowerCase();
-      if (!character.match(/\d|\w|\s/)) { return }
+      if (code == BACKSPACE) { $.easterEggs.log.pop(); return false; }
+      var character = String.fromCharCode(code).toLowerCase();
+      if (!character.match(/\d|\w/)) { character = ' ' }
       $.easterEggs.log.push(character);
       $.easterEggs.check(event);
     },
