@@ -1,0 +1,31 @@
+= jQuery Easter Eggs =
+
+Allows for hidden behavior to occur after a user types
+given strings into document. It's silly, but fun.
+
+USAGE
+
+This snippet will show the element #some_id when the user
+types 'info' at any point.
+
+  $('#some_id').addEgg('info', function() {
+    $(this).show();
+  });
+
+You can also have generic handlers that don't correspond to
+any particular jQuery objects.
+
+This snippet will show all elements with the class name "info"
+and hide all elements with the class name "not-info" after
+the user types "info".
+
+  $.easterEggs.add('info', function() {
+    $('.info').show();
+    $('.not-info').hide();
+  });
+
+TODO
+
+* Don't listen while users are typing in form inputs.
+
+(c) Copyright 2008 Pat Nakajima & Jonno Riekwel
